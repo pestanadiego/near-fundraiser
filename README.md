@@ -6,7 +6,7 @@ Fundnear is a NEAR dApp made to allow everyone to create fundraisers and donate 
 Key points to have in mind:
 - Every donation counts as an upvote, but not every upvote counts as a donation.
 - There are only upvotes, not downvotes.
-- Only one upvote per wallet. 
+- A fundraiser cannot have multiple upvotes made by the same wallet. 
 
 Check the demo dApp [here](https://pestanadiego.github.io/near-fundraiser/).
 
