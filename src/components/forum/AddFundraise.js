@@ -1,38 +1,45 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import toast from "react-hot-toast";
 import { Button, Modal, Form, FloatingLabel } from "react-bootstrap";
 
-const AddProduct = ({ save }) => {
+const AddFundraise = ({ save, account }) => {
   const [name, setName] = useState("");
-  const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
-  const [price, setPrice] = useState(0);
-  const isFormFilled = () => name && image && description && location && price;
+  const [image, setImage] = useState("");
+  const [amountNeeded, setAmountNeeded] = useState("");
+  const isFormFilled = () => name && image && description && amountNeeded;
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    if (account) {
+      setShow(true);
+    } else {
+      toast.error("You need to connect your wallet first.");
+    }
+  };
+
   return (
     <>
       <Button
         onClick={handleShow}
         variant='dark'
-        className='rounded-pill px-0'
-        style={{ width: "38px" }}
+        style={{ display: "flex", alignItems: "baseline" }}
       >
-        <i class='bi bi-plus'></i>
+        Add one
+        <i style={{ marginLeft: "5px" }} class='bi bi-plus'></i>
       </Button>
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>New Product</Modal.Title>
+          <Modal.Title>New Fundraise</Modal.Title>
         </Modal.Header>
         <Form>
           <Modal.Body>
             <FloatingLabel
               controlId='inputName'
-              label='Product name'
+              label='Fundraiser name'
               className='mb-3'
             >
               <Form.Control
@@ -40,7 +47,7 @@ const AddProduct = ({ save }) => {
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
-                placeholder='Enter name of product'
+                placeholder='Enter name of fundraise'
               />
             </FloatingLabel>
             <FloatingLabel
@@ -71,28 +78,15 @@ const AddProduct = ({ save }) => {
               />
             </FloatingLabel>
             <FloatingLabel
-              controlId='inputLocation'
-              label='Location'
+              controlId='inputAmountNeeded'
+              label='Amount Needed'
               className='mb-3'
             >
               <Form.Control
                 type='text'
-                placeholder='Location'
+                placeholder='Amount Needed'
                 onChange={(e) => {
-                  setLocation(e.target.value);
-                }}
-              />
-            </FloatingLabel>
-            <FloatingLabel
-              controlId='inputPrice'
-              label='Price'
-              className='mb-3'
-            >
-              <Form.Control
-                type='text'
-                placeholder='Price'
-                onChange={(e) => {
-                  setPrice(e.target.value);
+                  setAmountNeeded(e.target.value);
                 }}
               />
             </FloatingLabel>
@@ -108,15 +102,20 @@ const AddProduct = ({ save }) => {
             onClick={() => {
               save({
                 name,
-                image,
                 description,
-                location,
-                price,
+                image,
+                amountNeeded,
+              });
+              console.log({
+                name,
+                description,
+                image,
+                amountNeeded,
               });
               handleClose();
             }}
           >
-            Save product
+            Save
           </Button>
         </Modal.Footer>
       </Modal>
@@ -124,8 +123,8 @@ const AddProduct = ({ save }) => {
   );
 };
 
-AddProduct.propTypes = {
+AddFundraise.propTypes = {
   save: PropTypes.func.isRequired,
 };
 
-export default AddProduct;
+export default AddFundraise;

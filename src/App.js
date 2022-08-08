@@ -1,10 +1,9 @@
 import React, { useEffect, useCallback, useState } from "react";
-import { Container, Nav } from "react-bootstrap";
+import { Button, Container, Nav } from "react-bootstrap";
+import { Toaster } from "react-hot-toast";
 import { login, logout as destroy, accountBalance } from "./utils/near";
 import Wallet from "./components/Wallet";
-import Products from "./components/marketplace/Products";
-import Cover from "./components/utils/Cover";
-import coverImg from "./assets/img/sandwich.jpg";
+import Fundraises from "./components/forum/Fundraises";
 import "./App.css";
 
 const App = function AppWrapper() {
@@ -20,27 +19,31 @@ const App = function AppWrapper() {
   useEffect(() => {
     getBalance();
   }, [getBalance]);
+
   return (
     <>
-      {account.accountId ? (
-        <Container fluid='md'>
-          <Nav className='justify-content-end pt-3 pb-5'>
-            <Nav.Item>
+      <Container fluid='md'>
+        <Nav className='justify-content-end pt-3 pb-5'>
+          <Nav.Item>
+            {account.accountId ? (
               <Wallet
                 address={account.accountId}
                 amount={balance}
                 symbol='NEAR'
                 destroy={destroy}
               />
-            </Nav.Item>
-          </Nav>
-          <main>
-            <Products />
-          </main>
-        </Container>
-      ) : (
-        <Cover name='Street Food' login={login} coverImg={coverImg} />
-      )}
+            ) : (
+              <Button onClick={login} variant='dark' className='px-3 mt-3'>
+                Connect Wallet
+              </Button>
+            )}
+          </Nav.Item>
+        </Nav>
+        <main>
+          <Fundraises account={account.accountId} />
+        </main>
+      </Container>
+      <Toaster />
     </>
   );
 };

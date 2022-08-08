@@ -10,7 +10,7 @@ const Wallet = ({ address, amount, symbol, destroy }) => {
             variant='light'
             align='end'
             id='dropdown-basic'
-            className='d-flex align-items-center border rounded-pill py-1'
+            className='d-flex align-items-center border py-1'
           >
             {amount ? (
               <>
