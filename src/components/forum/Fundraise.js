@@ -4,11 +4,11 @@ import toast from "react-hot-toast";
 import {
   Card,
   Button,
-  Col,
   Badge,
   Modal,
   Stack,
   Form,
+  Col,
   FloatingLabel,
   ProgressBar,
 } from "react-bootstrap";
@@ -73,8 +73,8 @@ const Fundraise = ({ fundraise, donate, upvote, account }) => {
   }, []);
 
   return (
-    <>
-      <Col key={id}>
+
+      <Col>
         <Card className='h-100'>
           <Card.Header>
             <Stack direction='horizontal' gap={2}>
@@ -152,8 +152,8 @@ const Fundraise = ({ fundraise, donate, upvote, account }) => {
                     donations
                       .slice(0)
                       .reverse()
-                      .map((donation) => (
-                        <div>
+                      .map((donation, index) => (
+                        <div key={index}>
                           <i className='fa fa-up' />
                           <p>
                             💰 <i>{donation.wallet}</i> donated{" "}
@@ -187,7 +187,7 @@ const Fundraise = ({ fundraise, donate, upvote, account }) => {
             </div>
           </Card.Body>
         </Card>
-      </Col>
+
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Donate</Modal.Title>
@@ -225,7 +225,7 @@ const Fundraise = ({ fundraise, donate, upvote, account }) => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+      </Col>
   );
 };
 
