@@ -24,6 +24,9 @@ export async function makeDonation({ id, account, amount }) {
   );
 }
 
-export async function doUpvote({ id, account }) {
-  await window.contract.upvote({ fundraiserId: id, wallet: account }, GAS);
+export async function doUpvote({ id, account, isDonation }) {
+  await window.contract.upvote(
+    { fundraiserId: id, wallet: account, isDonation },
+    GAS
+  );
 }

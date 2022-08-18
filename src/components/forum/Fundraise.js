@@ -41,7 +41,7 @@ const Fundraise = ({ fundraise, donate, upvote, account }) => {
 
   const triggerUpvote = () => {
     if (account) {
-      upvote(id, account);
+      upvote(id, account, false);
     } else {
       toast.error("You need to connect your wallet first.");
     }
@@ -65,6 +65,7 @@ const Fundraise = ({ fundraise, donate, upvote, account }) => {
 
   const handleShow = () => setShow(true);
 
+  // Check that the amount entered is valid
   const checkAmount = () => amount && amount !== "0";
 
   useEffect(() => {

@@ -68,9 +68,11 @@ const Fundraises = ({ account }) => {
     }
   };
 
-  const upvote = async (id, account) => {
+  const upvote = async (id, account, isDonation) => {
     try {
-      await doUpvote({ id, account }).then((resp) => getFundraises());
+      await doUpvote({ id, account, isDonation }).then((resp) =>
+        getFundraises()
+      );
     } catch (error) {
       toast.error(error.kind["ExecutionError"].substr(25, 15));
     } finally {
