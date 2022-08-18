@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/near-fundraiser/static/css/main.d87cbb72.chunk.css",
-    "main.js": "/near-fundraiser/static/js/main.c70b7ebc.chunk.js",
-    "main.js.map": "/near-fundraiser/static/js/main.c70b7ebc.chunk.js.map",
+    "main.js": "/near-fundraiser/static/js/main.56de94d4.chunk.js",
+    "main.js.map": "/near-fundraiser/static/js/main.56de94d4.chunk.js.map",
     "runtime-main.js": "/near-fundraiser/static/js/runtime-main.f96bb159.js",
     "runtime-main.js.map": "/near-fundraiser/static/js/runtime-main.f96bb159.js.map",
     "static/css/2.866b6530.chunk.css": "/near-fundraiser/static/css/2.866b6530.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.866b6530.chunk.css",
     "static/js/2.ea0b9ed4.chunk.js",
     "static/css/main.d87cbb72.chunk.css",
-    "static/js/main.c70b7ebc.chunk.js"
+    "static/js/main.56de94d4.chunk.js"
   ]
 }
